@@ -1,0 +1,509 @@
+
+/* ---------- General page styling ---------- */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                 sans-serif;
+    background: #f5f6fa;
+    color: #202332;
+    min-height: 100vh;
+    padding: 32px 16px;
+}
+
+button {
+    font: inherit;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible {
+    outline: 3px solid #8ba9ff;
+    outline-offset: 3px;
+}
+
+/* ---------- Main container ---------- */
+
+.app-container {
+    width: 100%;
+    max-width: 1050px;
+    margin: 0 auto;
+}
+
+.app-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.app-header h1 {
+    font-size: clamp(24px, 4vw, 32px);
+    font-weight: 700;
+    letter-spacing: -0.8px;
+}
+
+.subtitle {
+    color: #777d8f;
+    margin-top: 6px;
+    font-size: 14px;
+}
+
+.mode-badge {
+    background: #e9edff;
+    color: #405bd8;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    white-space: nowrap;
+}
+
+/* ---------- Calculator and history layout ---------- */
+
+.calculator-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(240px, 0.8fr);
+    gap: 22px;
+    align-items: start;
+}
+
+.calculator,
+.history-panel {
+    background: #ffffff;
+    border: 1px solid #e9ebf2;
+    border-radius: 20px;
+    padding: 22px;
+    box-shadow: 0 10px 35px rgba(30, 40, 80, 0.04);
+}
+
+/* ---------- Display ---------- */
+
+.display {
+    background: #f7f8fc;
+    border: 1px solid #eceef5;
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 20px;
+    min-width: 0;
+}
+
+.expression {
+    color: #858b9d;
+    font-size: 15px;
+    min-height: 22px;
+    overflow-wrap: anywhere;
+    text-align: right;
+}
+
+.result {
+    font-size: clamp(30px, 5vw, 42px);
+    font-weight: 650;
+    text-align: right;
+    overflow-wrap: anywhere;
+    min-height: 52px;
+    padding-top: 6px;
+    color: #202332;
+    font-variant-numeric: tabular-nums;
+}
+
+.angle-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 14px;
+    color: #777d8f;
+    font-size: 12px;
+}
+
+.angle-button {
+    background: #e9edff;
+    color: #405bd8;
+    border: none;
+    border-radius: 7px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* ---------- Scientific keypad ---------- */
+
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.btn {
+    min-width: 0;
+    min-height: 52px;
+    border: 1px solid transparent;
+    border-radius: 11px;
+    font-size: 17px;
+    font-weight: 550;
+    transition: background 0.15s ease,
+                transform 0.1s ease,
+                box-shadow 0.15s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(30, 40, 80, 0.07);
+}
+
+.btn:active {
+    transform: scale(0.96);
+}
+
+/* Number buttons */
+
+.number {
+    background: #f5f6fa;
+    color: #25293a;
+    border-color: #eceef4;
+}
+
+.number:hover {
+    background: #e9ecf5;
+}
+
+/* Scientific function buttons */
+
+.function {
+    background: #edf0ff;
+    color: #4055c7;
+}
+
+.function:hover {
+    background: #dfe5ff;
+}
+
+/* Arithmetic operators */
+
+.operator {
+    background: #fff0e5;
+    color: #b96328;
+}
+
+.operator:hover {
+    background: #ffe4d1;
+}
+
+/* Clear and answer buttons */
+
+.utility {
+    background: #f0f1f5;
+    color: #555c70;
+}
+
+.utility:hover {
+    background: #e2e5ed;
+}
+
+/* Equals button */
+
+.equals {
+    grid-column: span 3;
+    background: #4968e8;
+    color: #ffffff;
+    font-size: 24px;
+}
+
+.equals:hover {
+    background: #3555d8;
+}
+
+/* ---------- History panel ---------- */
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.history-header h2 {
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.history-header p {
+    margin-top: 5px;
+    color: #858b9d;
+    font-size: 12px;
+}
+
+.clear-history {
+    border: none;
+    background: transparent;
+    color: #4968e8;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px;
+}
+
+.clear-history:hover {
+    color: #2746c6;
+}
+
+.history-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 420px;
+    overflow-y: auto;
+}
+
+.empty-history {
+    color: #999fb0;
+    text-align: center;
+    font-size: 13px;
+    line-height: 1.6;
+    padding: 24px 8px;
+}
+
+.history-item {
+    background: #f8f9fc;
+    border: 1px solid #edf0f5;
+    border-radius: 10px;
+    padding: 12px;
+    overflow-wrap: anywhere;
+}
+
+.history-expression {
+    color: #777d8f;
+    font-size: 12px;
+    margin-bottom: 6px;
+}
+
+.history-result {
+    color: #25293a;
+    font-size: 17px;
+    font-weight: 650;
+}
+
+.history-item button {
+    margin-top: 8px;
+    padding: 4px 8px;
+    background: #e9edff;
+    color: #4055c7;
+    border: none;
+    border-radius: 6px;
+    font-size: 11px;
+}
+
+/* ---------- Footer ---------- */
+
+.app-footer {
+    text-align: center;
+    margin-top: 24px;
+    color: #999fb0;
+    font-size: 12px;
+}
+
+/* ---------- Responsive design ---------- */
+
+@media (max-width: 720px) {
+    body {
+        padding: 20px 12px;
+    }
+
+    .calculator-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .calculator,
+    .history-panel {
+        padding: 16px;
+        border-radius: 16px;
+    }
+
+    .history-list {
+        max-height: 260px;
+    }
+}
+
+@media (max-width: 400px) {
+    .button-grid {
+        gap: 6px;
+    }
+
+    .btn {
+        min-height: 45px;
+        border-radius: 8px;
+        font-size: 14px;
+    }
+
+    .display {
+        padding: 14px;
+    }
+
+    .app-header {
+        align-items: flex-start;
+    }
+
+    .mode-badge {
+        font-size: 9px;
+        padding: 7px 8px;
+    }
+}
+
+/* ---------- Drawing whiteboard ---------- */
+
+.whiteboard-panel {
+    background: #ffffff;
+    border: 1px solid #e9ebf2;
+    border-radius: 20px;
+    padding: 22px;
+    margin-top: 22px;
+    box-shadow: 0 10px 35px rgba(30, 40, 80, 0.04);
+}
+
+.whiteboard-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.whiteboard-header h2 {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.whiteboard-header p {
+    color: #858b9d;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.whiteboard-toolbar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.whiteboard-toolbar label {
+    font-size: 13px;
+    color: #62697b;
+}
+
+#pen-color {
+    width: 36px;
+    height: 32px;
+    padding: 2px;
+    background: #ffffff;
+    border: 1px solid #dfe3ec;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+#pen-size {
+    width: 100px;
+    accent-color: #4968e8;
+    cursor: pointer;
+}
+
+.board-button {
+    padding: 8px 13px;
+    border: 1px solid #e1e5ef;
+    border-radius: 8px;
+    background: #f5f6fa;
+    color: #454c60;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.board-button:hover {
+    background: #e9ecf5;
+}
+
+.board-button.active-tool {
+    background: #e9edff;
+    color: #4055c7;
+    border-color: #cbd5ff;
+}
+
+.board-button:focus-visible {
+    outline: 3px solid #8ba9ff;
+    outline-offset: 2px;
+}
+
+.clear-board {
+    background: #fff0e9;
+    color: #b95432;
+    border-color: #f5ddd2;
+}
+
+.clear-board:hover {
+    background: #ffe3d8;
+}
+
+.canvas-container {
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+    border: 1px solid #e1e5ef;
+    border-radius: 12px;
+    background-color: #ffffff;
+    background-image:
+        linear-gradient(#edf0f6 1px, transparent 1px),
+        linear-gradient(90deg, #edf0f6 1px, transparent 1px);
+    background-size: 24px 24px;
+}
+
+#drawing-board {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: crosshair;
+    touch-action: none;
+}
+
+.whiteboard-hint {
+    margin-top: 10px;
+    color: #858b9d;
+    font-size: 12px;
+}
+
+@media (max-width: 480px) {
+    .whiteboard-panel {
+        padding: 14px;
+        border-radius: 16px;
+    }
+
+    .whiteboard-header {
+        align-items: flex-start;
+    }
+
+    .whiteboard-header h2 {
+        font-size: 17px;
+    }
+
+    .whiteboard-header p {
+        font-size: 12px;
+    }
+
+    .whiteboard-toolbar {
+        gap: 9px;
+    }
+
+    .canvas-container {
+        height: 260px;
+    }
+}

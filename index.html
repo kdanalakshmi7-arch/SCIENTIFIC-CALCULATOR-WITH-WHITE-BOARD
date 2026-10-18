@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific Calculator</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <main class="app-container">
+
+        <header class="app-header">
+            <div>
+                <h1>Scientific Calculator</h1>
+                <p class="subtitle">Calculate with confidence.</p>
+            </div>
+            <span class="mode-badge">SCIENTIFIC</span>
+        </header>
+
+        <div class="calculator-layout">
+
+            <section class="calculator" aria-label="Scientific calculator">
+
+                <div class="display">
+                    <div id="expression" class="expression"
+                         aria-label="Current expression"></div>
+
+                    <div id="result" class="result"
+                         aria-live="polite">0</div>
+
+                    <div class="angle-row">
+                        <span>Angle mode</span>
+                        <button type="button" id="angle-mode"
+                                class="angle-button" data-action="toggle-angle">
+                            DEG
+                        </button>
+                    </div>
+                </div>
+
+                <div class="button-grid">
+
+                    <!-- Scientific functions -->
+                    <button type="button" class="btn function"
+                            data-value="sin(">sin</button>
+                    <button type="button" class="btn function"
+                            data-value="cos(">cos</button>
+                    <button type="button" class="btn function"
+                            data-value="tan(">tan</button>
+                    <button type="button" class="btn function"
+                            data-value="log(">log</button>
+                    <button type="button" class="btn function"
+                            data-value="ln(">ln</button>
+
+                    <button type="button" class="btn function"
+                            data-value="sqrt(">√</button>
+                    <button type="button" class="btn function"
+                            data-value="^2">x²</button>
+                    <button type="button" class="btn function"
+                            data-value="^">xʸ</button>
+                    <button type="button" class="btn function"
+                            data-value="(">(</button>
+                    <button type="button" class="btn function"
+                            data-value=")">)</button>
+
+                    <button type="button" class="btn function"
+                            data-value="pi">π</button>
+                    <button type="button" class="btn function"
+                            data-value="e">e</button>
+                    <button type="button" class="btn function"
+                            data-value="!">n!</button>
+                    <button type="button" class="btn function"
+                            data-value="%">%</button>
+                    <button type="button" class="btn function"
+                            data-action="delete">⌫</button>
+
+                    <!-- Clear and arithmetic operations -->
+                    <button type="button" class="btn utility"
+                            data-action="clear">AC</button>
+                    <button type="button" class="btn operator"
+                            data-value="/">÷</button>
+                    <button type="button" class="btn operator"
+                            data-value="*">×</button>
+                    <button type="button" class="btn operator"
+                            data-value="-">−</button>
+                    <button type="button" class="btn operator"
+                            data-value="+">+</button>
+
+                    <!-- Number keypad -->
+                    <button type="button" class="btn number"
+                            data-value="7">7</button>
+                    <button type="button" class="btn number"
+                            data-value="8">8</button>
+                    <button type="button" class="btn number"
+                            data-value="9">9</button>
+                    <button type="button" class="btn number"
+                            data-value="4">4</button>
+                    <button type="button" class="btn number"
+                            data-value="5">5</button>
+
+                    <button type="button" class="btn number"
+                            data-value="6">6</button>
+                    <button type="button" class="btn number"
+                            data-value="1">1</button>
+                    <button type="button" class="btn number"
+                            data-value="2">2</button>
+                    <button type="button" class="btn number"
+                            data-value="3">3</button>
+                    <button type="button" class="btn number"
+                            data-value="0">0</button>
+
+                    <button type="button" class="btn number"
+                            data-value=".">.</button>
+                    <button type="button" class="btn utility"
+                            data-value="ans">Ans</button>
+                    <button type="button" class="btn equals"
+                            data-action="equals">=</button>
+
+                </div>
+            </section>
+
+            <!-- Calculation history -->
+            <aside class="history-panel">
+                <div class="history-header">
+                    <div>
+                        <h2>History</h2>
+                        <p>Your recent calculations</p>
+                    </div>
+
+                    <button type="button" id="clear-history"
+                            class="clear-history"
+                            data-action="clear-history">
+                        Clear
+                    </button>
+                </div>
+
+                <ul id="history-list" class="history-list">
+                    <li class="empty-history">
+                        Your calculations will appear here.
+                    </li>
+                </ul>
+            </aside>
+
+        </div>
+
+       
+        </div>
+
+        <!-- Drawing Whiteboard -->
+        <section class="whiteboard-panel" aria-label="Drawing whiteboard">
+
+            <div class="whiteboard-header">
+                <div>
+                    <h2>Drawing Whiteboard</h2>
+                    <p>Work out formulas, sketch graphs, or make notes.</p>
+                </div>
+
+                <button type="button" id="clear-board"
+                        class="board-button clear-board">
+                    Clear board
+                </button>
+            </div>
+
+            <div class="whiteboard-toolbar">
+
+                <label for="pen-color">Pen color</label>
+                <input type="color" id="pen-color" value="#202332">
+
+                <label for="pen-size">Pen size</label>
+                <input type="range" id="pen-size"
+                       min="1" max="12" value="3">
+
+                <button type="button" id="pen-tool"
+                        class="board-button active-tool">
+                    Pen
+                </button>
+
+                <button type="button" id="eraser-tool"
+                        class="board-button">
+                    Eraser
+                </button>
+
+            </div>
+
+            <div class="canvas-container">
+                <canvas id="drawing-board"
+                        aria-label="Blank drawing area. Draw using your mouse or trackpad.">
+                </canvas>
+            </div>
+
+            <p class="whiteboard-hint">
+                Draw using your mouse or trackpad. Select Eraser to remove strokes.
+            </p>
+
+        </section>
+
+        <footer class="app-footer">
+            Built with HTML, CSS &amp; JavaScript
+        </footer>
+
+
+    </main>
+</body>
+</html>

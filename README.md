@@ -1,0 +1,1 @@
+A beginner-friendly Scientific Calculator built using HTML, CSS, and JavaScript. It includes advanced mathematical functions, mechanical button sounds, calculation history, and an interactive drawing whiteboard for solving equations, sketching graphs, and making notes. The project features a clean, minimal design and a responsive layout.
